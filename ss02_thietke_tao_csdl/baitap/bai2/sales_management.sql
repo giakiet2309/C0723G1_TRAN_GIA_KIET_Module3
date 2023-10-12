@@ -1,5 +1,5 @@
-create database lesson_2_2;
-use lesson_2_2;
+create database sales_management;
+use sales_management;
 create table `products` (
 	`product_id` int primary key auto_increment,
     `product_name` varchar(200),
@@ -20,6 +20,7 @@ create table `orders` (
 create table `order_details`(
 	`order_id` int,
     `product_id` int,
+    `order_quantity` int,
     primary key(`order_id`, `product_id`),
     foreign key (`order_id`) references `orders` (`order_id`),
     foreign key (`product_id`) references `products` (`product_id`)
