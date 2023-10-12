@@ -3,7 +3,7 @@ create database student_management;
 use student_management;
 
 create table class(
- class_id int primary key auto_increment not null,
+ class_id int primary key auto_increment ,
  class_name varchar(200)
 );
 
