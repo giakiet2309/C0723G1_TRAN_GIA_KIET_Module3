@@ -1,0 +1,149 @@
+.container{
+    height: 595px;
+}
+.header{
+    justify-content: space-between;
+    background:#7952b3;
+    height: 8%;
+}
+.main{
+    min-height: 84%;
+}
+.footer{
+    background:#d3d6d8;
+    height: 8%;
+}
+.navbar{
+    position: fixed;
+}
+.left{
+    background:#c1d6cc;
+}
+.right{
+    background: #c1d6cc;
+    padding: 1%;
+}
+.center{
+    background: #7abaff;
+    padding: 1%;
+}
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.row{
+    /*cho phép thẻ div (col) nổi lên trên*/
+    display: flex;
+    /*Các thẻ div (col)  không đủ chỗ chứa trên 1 hàng thì rớt xuống*/
+    flex-wrap: wrap;
+}
+ul{
+    list-style: none;
+}
+.header ul{
+    display: flex;
+    align-items: center;
+}
+.header ul li {
+    color: orange;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.left ul li{
+    margin-top: 7%;
+}
+.right ul li{
+    margin-top: 7%;
+}
+
+
+@media only screen and (max-width:740px ){
+    .col-s-1 {width: 8.33333%;}
+    .col-s-2 {width: 16.66667%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33333%;}
+    .col-s-5 {width: 41.66667%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33333%;}
+    .col-s-8 {width: 66.66667%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33333%;}
+    .col-s-11 {width: 91.66667%;}
+    .col-s-12 {width: 100%;}
+    /*tăng kích thước font cho dễ đọc*/
+    .left li{
+        font-size: 40px;
+        text-align: center;
+        color: white;
+    }
+    .right li a{
+        font-size: 40px;
+        text-align: center;
+        color: red;
+    }
+    p{
+        font-size: 35px;
+        color: darkblue;
+        margin: 5px;
+    }
+    .title{
+        font-size: 55px;
+        color: red;
+    }
+    /*Ẩn phần list*/
+
+    /*.header ul{*/
+    /*    display: none;*/
+    /*}*/
+    /*!*Hiện thị dropdown*!*/
+    /*.header select{*/
+    /*    height: 32px;*/
+    /*    display: inline;*/
+    /*}*/
+}
+/*Màn hinh laptop và máy tính bảng*/
+@media only screen and (min-width:741px)and (max-width:1240px){
+    .col-m-1 {width: 8.33333%;}
+    .col-m-2 {width: 16.66667%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33333%;}
+    .col-m-5 {width: 41.66667%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33333%;}
+    .col-m-8 {width: 66.66667%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33333%;}
+    .col-m-11 {width: 91.66667%;}
+    .col-m-12 {width: 100%;}
+
+    /*.header ul{*/
+    /*    display: block;*/
+    /*}*/
+    /*.header select{*/
+    /*    display: none;*/
+    /*}*/
+
+}
+/*Màn hình máy tính pc và tivi smart*/
+@media only screen and (min-width:1241px){
+    .col-l-1 {width: 8.33333%;}
+    .col-l-2 {width: 16.66667%;}
+    .col-l-3 {width: 25%;}
+    .col-l-4 {width: 33.33333%;}
+    .col-l-5 {width: 41.66667%;}
+    .col-l-6 {width: 50%;}
+    .col-l-7 {width: 58.33333%;}
+    .col-l-8 {width: 66.66667%;}
+    .col-l-9 {width: 75%;}
+    .col-l-10 {width: 83.33333%;}
+    .col-l-11 {width: 91.66667%;}
+    .col-l-12 {width: 100%;}
+
+    /*.header ul{*/
+    /*    display: block;*/
+    /*}*/
+    /*.header select{*/
+    /*    display: none;*/
+    /*}*/
+}

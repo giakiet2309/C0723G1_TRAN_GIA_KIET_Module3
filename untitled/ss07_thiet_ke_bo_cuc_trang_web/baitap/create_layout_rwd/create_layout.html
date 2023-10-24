@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>layout_rwd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <style>
+        #header {
+            display: grid;
+            grid-template-columns: repeat(5, 120px) auto 120px;
+        }
+
+        #header div {
+            text-align: center;
+            font-size: 20px;
+            padding: 25px;
+            background-color: #222222;
+            color: white;
+        }
+
+        #content {
+            display: grid;
+            grid-template-columns: 1fr 5fr 1fr;
+            background-color: #F1F1F1;
+            min-height: 800px;
+        }
+
+        #content-text {
+            background-color: white;
+            min-width: 500px;
+            padding: 25px;
+
+        }
+
+        #footer {
+            height: 80px;
+            text-align: center;
+            justify-items: center;
+            background-color: #222222;
+            color: white;
+            font-size: 30px;
+            padding-top: 20px;
+            padding-bottom: 0px;
+            margin-bottom: 0;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        .promotion {
+            display: grid;
+            grid-template-columns: 90%;
+            grid-template-rows: 100px 100px 100px;
+            text-align: center;
+        }
+
+        .promotion a {
+            color: #2f79b9;
+            margin-top: 40px;
+            padding: 0;
+            margin-bottom: 0px;
+            font-size: 20px;
+        }
+
+        .link {
+            display: grid;
+            grid-template-columns: 90%;
+            grid-template-rows: 100px 100px;
+            justify-content: center;
+            margin-bottom: 20px;
+
+
+        }
+
+        button {
+            width: 90%;
+            height: 90%;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 800px) {
+            #content {
+                display: grid;
+                grid-template-columns: 1fr;
+                min-height: 800px;
+            }
+
+            #header {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <div>Logo</div>
+        <div>Home</div>
+        <div>About</div>
+        <div>Project</div>
+        <div>Contact</div>
+        <div></div>
+        <div><i class="fa-solid fa-right-to-bracket"></i> Login</div>
+
+    </div>
+    <div id="content">
+        <div class="promotion">
+            <a>Link</a>
+            <a>Link</a>
+            <a>Link</a>
+        </div>
+        <div id="content-text">
+            <h1>Welcome</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Beatae commodi doloremque ex laudantium numquam quod sit voluptatem!
+                Ad adipisci alias, asperiores, delectus et fugiat, incidunt inventore
+                ipsam ipsum magnam nisi nostrum perferendis quaerat quis reprehenderit sed ut
+                vero voluptatibus! Animi, eius illo! Animi commodi consequatur distinctio
+                eaque enim excepturi harum illum, modi mollitia nesciunt odio odit placeat
+                quae quam quasi quibusdam quos saepe sequi suscipit tenetur unde veritatis
+                vitae voluptas. Ab accusamus amet consequatur consequuntur cupiditate dignissimos
+                ducimus illo illum impedit in maxime nihil nulla obcaecati pariatur placeat possimus,
+                quae qui quia quidem recusandae sed tempora tenetur velit vero voluptas!</p>
+            <hr>
+            <h2>Test</h2>
+            <p>Lorem ipsum </p>
+        </div>
+        <div class="link">
+            <button>ADS</button>
+            <button>ADS</button>
+        </div>
+    </div>
+    <div id="footer">Footer Text</div>
+
+</body>
+
+</html>
