@@ -45,6 +45,7 @@
     <th scope="col">Manufacture</th>
     <th scope="col">Edit</th>
     <th scope="col">Delete</th>
+    <th scope="col">Info</th>
   </tr>
   </thead>
   <tbody>
@@ -60,6 +61,9 @@
       </a></th>
       <td><a href="/products?action=delete&id=${product.getId()}">
         <button>Delete</button>
+      </a></td>
+      <td><a href="/products?action=Info&id=${product.getId()}">
+        <button>Info</button>
       </a></td>
     </tr>
   </tbody>
