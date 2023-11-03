@@ -18,4 +18,6 @@ public interface IUserRepository {
 
     public List<User> searchUser(String word) throws SQLException;
 
+    List<User> sortByName();
+
 }

@@ -62,10 +62,10 @@ public class UserServlet extends HttpServlet {
                     UserService.searchUser(request, response);
                     break;
                 case "sort":
-                    UserService.sortUser(request, response);
+                    UserService.sortListUser(request, response);
                     break;
                 default:
-                    UserService.listUser(request, response);
+                    UserService.displayAllUsers(request, response);
                     break;
             }
         } catch (SQLException ex) {
