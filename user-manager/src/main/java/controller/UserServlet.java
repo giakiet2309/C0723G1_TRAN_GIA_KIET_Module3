@@ -15,7 +15,8 @@ import java.sql.SQLException;
 
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
 public class UserServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+    private  final UserService userService = new UserService();
+
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +29,7 @@ public class UserServlet extends HttpServlet {
         try {
             switch (action) {
                 case "create":
-                    UserService.insertUser(request, response);
+                    userService.insertUser(request, response);
                     break;
                 case "edit":
                     UserService.updateUser(request, response);

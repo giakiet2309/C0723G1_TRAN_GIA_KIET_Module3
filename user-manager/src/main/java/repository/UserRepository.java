@@ -92,14 +92,7 @@ public class UserRepository implements IUserRepository {
         return users;
     }
 
-    public boolean deleteUser(int id) throws SQLException {
-        boolean rowDeleted;
-        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_USERS);) {
-            statement.setInt(1, id);
-            rowDeleted = statement.executeUpdate() > 0;
-        }
-        return rowDeleted;
-    }
+
 
     public boolean updateUser(User user) throws SQLException {
         boolean rowUpdated;
@@ -134,28 +127,6 @@ public class UserRepository implements IUserRepository {
         List<User> users = new ArrayList<>();
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_USERS_SQL)) {
             preparedStatement.setString(1, "%" + word + "%");
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String email = rs.getString("email");
-                String country = rs.getString("country");
-                users.add(new User(id, name, email, country));
-            }
-        } catch (SQLException e) {
-            printSQLException(e);
-        }
-        return users;
-    }
-
-    public List<User> sortByName() {
-
-        List<User> users = new ArrayList<>();
-        try (Connection connection = getConnection();
-
-             PreparedStatement preparedStatement = connection.prepareStatement(SORT_USERS_SQL);) {
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {

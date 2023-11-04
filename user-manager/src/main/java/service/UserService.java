@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class UserService{
+public  class UserService{
     private static IUserRepository userRepository = new UserRepository();
 
 
@@ -67,16 +67,6 @@ public class UserService{
         dispatcher.forward(request, response);
     }
 
-    public static void deleteUser(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        userRepository.deleteUser(id);
-
-        List<User> listUser = userRepository.selectAllUsers();
-        request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
-        dispatcher.forward(request, response);
-    }
     public static void searchUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         String word = request.getParameter("word");
@@ -84,13 +74,6 @@ public class UserService{
 
         System.out.println(listUser);
 
-        request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
-        dispatcher.forward(request, response);
-    }
-    public static void sortListUser(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-        List<User> listUser = userRepository.sortByName();
         request.setAttribute("listUser", listUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         dispatcher.forward(request, response);

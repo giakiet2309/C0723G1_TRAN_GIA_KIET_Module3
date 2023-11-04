@@ -83,8 +83,6 @@ public class ProductsController extends HttpServlet {
             case "edit":
                 edit(request, response);
                 break;
-
-
             default: showAll(request, response);
                 break;
         }
