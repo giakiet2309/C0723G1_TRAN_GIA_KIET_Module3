@@ -22,5 +22,5 @@ public interface IQuanLyChatLieuService {
     int getIdByCode(String code);
 
     List<String> getAllName();
-
+    boolean delete(int  id);
 }

@@ -23,5 +23,7 @@ public interface IQuanLyChatLieuRepository {
 
     List<String> getAllName();
 
+    boolean delete(int  id);
+
 
 }

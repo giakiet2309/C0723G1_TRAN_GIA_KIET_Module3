@@ -16,16 +16,17 @@ public class QuanLyChatLieuRepository implements IQuanLyChatLieuRepository {
 
     private static final String SELECT_USER_BY_ID = "select * from chat_lieu where ma_chat_lieu=? ";
 
-    private static final String SEARCH_USERS_SQL = "select ten from chat_lieu ;";
+    private static final String SEARCH_USERS_SQL = "select ten from chat_lieu where ten != 'not found';";
 
     private static final String DISPLAY_ALL_USERS = "call display_all()";
 
     private static final String UPDATE_USERS = "call update_all(?,?,?,?)";
 
-    private static final String SELECT_ALL_BY_NAME = "select * from users where ten like ?";
-
     private static final String SELECT_ID_BY_CODE = "select id from chat_lieu where ma_chat_lieu =  ?;";
 
+    private static final String SEARCH_SIZE_BY_NAME = " select ma_chat_lieu,ten,mo_ta from chat_lieu where 1 = 1 and  ten != 'not found'";
+
+    private static final String DELETE_BY_ID = "update chat_lieu set ten = 'not found', mo_ta = 'not found' where id = ?";
 
     protected Connection getConnection() {
         Connection connection = null;
@@ -46,6 +47,7 @@ public class QuanLyChatLieuRepository implements IQuanLyChatLieuRepository {
         try {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
+            preparedStatement.setInt(1, quanLyChatLieu.getId());
             preparedStatement.setString(2, quanLyChatLieu.getNameId());
             preparedStatement.setString(3, quanLyChatLieu.getNameType());
             preparedStatement.setString(4, quanLyChatLieu.getDescribe());
@@ -114,39 +116,31 @@ public class QuanLyChatLieuRepository implements IQuanLyChatLieuRepository {
 
     @Override
     public List<QuanLyChatLieu> search(String word) throws SQLException {
-        List<QuanLyChatLieu> quanLyChatLieus = new ArrayList<>();
-        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_USERS_SQL)) {
-            preparedStatement.setString(1, "%" + word + "%");
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String nameId = rs.getString("ma_chat_lieu");
-                String nameType = rs.getString("ten");
-                String describe = rs.getString("mo_ta");
-                quanLyChatLieus.add(new QuanLyChatLieu(id, nameId, nameType, describe));
-            }
-        } catch (SQLException e) {
-            printSQLException(e);
-        }
-        return quanLyChatLieus;
+        return null;
     }
 
     @Override
     public List<QuanLyChatLieu> selectAllByName(String word) {
         List<QuanLyChatLieu> quanLyChatLieuList = new ArrayList<>();
-        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_BY_NAME);) {
-            preparedStatement.setString(1, "%" + word + "%");
-            ResultSet resultSet = preparedStatement.executeQuery();
+        ResultSet resultSet;
+        try {
+            Connection connection = getConnection();
+            if (word.equals("all")) {
+                PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_SIZE_BY_NAME);
+                resultSet = preparedStatement.executeQuery();
+            } else {
+                String sqlQuery = SEARCH_SIZE_BY_NAME + " and ten = '" + word + "'";
+                PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+                resultSet = preparedStatement.executeQuery();
+            }
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String email = resultSet.getString("email");
-                String country = resultSet.getString("country");
-                quanLyChatLieuList.add(new QuanLyChatLieu(id, name, email, country));
+                String nameId = resultSet.getString("ma_chat_lieu");
+                String nameValue = resultSet.getString("ten");
+                String describe = resultSet.getString("mo_ta");
+                quanLyChatLieuList.add(new QuanLyChatLieu(nameId, nameValue, describe));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return quanLyChatLieuList;
     }
@@ -174,13 +168,13 @@ public class QuanLyChatLieuRepository implements IQuanLyChatLieuRepository {
         int id;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ID_BY_CODE);
-            preparedStatement.setString(1, code );
+            preparedStatement.setString(1, code);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 id = resultSet.getInt("id");
 
-            }else {
+            } else {
                 id = -1;
             }
 
@@ -198,13 +192,27 @@ public class QuanLyChatLieuRepository implements IQuanLyChatLieuRepository {
             String name;
             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_USERS_SQL);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                 name = resultSet.getString("ten");
-                 stringList.add(name);
+            while (resultSet.next()) {
+                name = resultSet.getString("ten");
+                stringList.add(name);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return stringList;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        Boolean rowDelete;
+        Connection connection = getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_BY_ID);
+            preparedStatement.setInt(1, id);
+            rowDelete = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rowDelete;
     }
 }

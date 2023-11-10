@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/../../baianhtoan/C0623G1-LeQuangToan/castudy_nhom_1" />
     <file type="web" url="file://$PROJECT_DIR$" />
+    <file type="web" url="file://$PROJECT_DIR$/../quan_ly_size" />
     <file type="web" url="file://$PROJECT_DIR$/../ss9/bai_tap/product_discount_calc/QuanLySanPham" />
     <file type="web" url="file://$PROJECT_DIR$/../user-manager" />
   </component>

@@ -14,6 +14,15 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/../quan_ly_size" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/../quan_ly_size" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/../ss9/bai_tap/product_discount_calc/QuanLySanPham" />
         <option name="modules">
           <set>
@@ -27,6 +36,15 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/../user-manager" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/../../baianhtoan/C0623G1-LeQuangToan/castudy_nhom_1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/../../baianhtoan/C0623G1-LeQuangToan/castudy_nhom_1" />
           </set>
         </option>
       </GradleProjectSettings>

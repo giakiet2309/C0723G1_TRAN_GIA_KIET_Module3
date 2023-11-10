@@ -184,30 +184,20 @@
         <h2 class="title-h2">QUẢN LÝ LOẠI CHẤT LIỆU</h2>
         <a href="/quan_ly_chat_lieu?action=add">ADD</a>
 
-        <form>
+        <form action="/quan_ly_chat_lieu">
             <div class="row b1">
                 <div class="col-md-2 col-sm-6">
-                    <p>Mã loại chất liệu</p>
-                    <input class="form-control form-control-sm b1" type="text" placeholder="Example"
-                           aria-label=".form-control-sm example">
-                </div>
-
-                <div class="col-md-2 col-sm-6">
                     <p>Tên loại chất liệu</p>
-                    <select class="form-select form-select-sm b1" aria-label="Small select example">
-                        <option name="choose" value="all" selected>Tất cả</option>
-
+                    <select class="form-select form-select-sm b1" aria-label="Small select example" name ="nameSize">
+                        <option  value="all" selected>Tất cả</option>
                         <c:forEach items="${listName}" var="name">
                             <option value="${name}" name="choose">${name}</option>
                         </c:forEach>
-
-
                     </select>
                 </div>
-
                 <div class="col-md-2 col-sm-6">
                     <div class="py-4">
-                        <button type="submit" class="btn btn-outline-danger bt b1"
+                        <button type="submit" name = "action" value = "search" class="btn btn-outline-danger bt b1"
                                 style="height: 30.33px; margin-top: 7px">Tìm kiếm
                         </button>
                     </div>
@@ -215,6 +205,7 @@
                 </div>
             </div>
         </form>
+
         <div class="b1">
             <table class="table table-striped table-hover">
                 <thead style="font-size: 14px">
@@ -222,6 +213,8 @@
                     <th>Mã loại chất liệu</th>
                     <th>Tên loại chất liệu</th>
                     <th>Mô tả</th>
+                    <th>Sửa</th>
+                    <th>Xóa</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -232,6 +225,9 @@
                         <td><c:out value="${quanLyChatLieu.describe}"/></td>
                         <td>
                             <a href="/quan_ly_chat_lieu?action=edit&id=${quanLyChatLieu.nameId}">Edit</a>
+                        </td>
+                        <td>
+                            <a href="/quan_ly_chat_lieu?action=delete&id=${quanLyChatLieu.nameId}">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>

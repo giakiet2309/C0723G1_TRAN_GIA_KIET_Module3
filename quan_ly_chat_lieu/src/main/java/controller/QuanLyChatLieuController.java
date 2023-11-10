@@ -54,6 +54,8 @@ public class QuanLyChatLieuController extends HttpServlet {
             case "search":
                 search(request, response);
                 break;
+            case "delete" :
+                delete(request,response);
             default:
                 displayAll(request, response);
                 break;
@@ -78,7 +80,6 @@ public class QuanLyChatLieuController extends HttpServlet {
 
 
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String code = request.getParameter("nameId");
         String nameType = request.getParameter("nameType");
         String describe = request.getParameter("describe");
@@ -112,9 +113,24 @@ public class QuanLyChatLieuController extends HttpServlet {
     }
 
 
+    public void delete(HttpServletRequest request,HttpServletResponse response){
+        String code = request.getParameter("id");
+        int id = quanLyChatLieuService.getIdByCode(code);
+        quanLyChatLieuService.delete(id);
+        try {
+            displayAll(request,response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String word = request.getParameter("word");
+        String word = request.getParameter("nameSize");
         List<QuanLyChatLieu> quanLyChatLieuList = quanLyChatLieuService.selectAllByName(word);
+        List<String> listName = quanLyChatLieuService.getAllName();
+        request.setAttribute("listName",listName);
         request.setAttribute("list", quanLyChatLieuList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/product/list.jsp");
         try {

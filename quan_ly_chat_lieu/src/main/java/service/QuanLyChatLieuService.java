@@ -51,4 +51,9 @@ public class QuanLyChatLieuService implements IQuanLyChatLieuService{
         return quanLyChatLieuRepository.getAllName();
     }
 
+    @Override
+    public boolean delete(int id) {
+        return quanLyChatLieuRepository.delete(id);
+    }
+
 }
